@@ -1,0 +1,45 @@
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(A5, INPUT);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  float a = analogRead(A5);
+  
+  float max = 40;/*статично задаване на стойност*/
+  float period = max/5;
+  Serial.print(a);
+  
+
+  if(a > 0 && a < period){
+  digitalWrite(2, HIGH);
+  }else if(a > period && a < 2 * period){
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  }else if(a > 2 * period && a < 3 * period){
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  }else if(a > 3 * period && a < 4 * period){
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  }else if(a > 4 * period && a < max){
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  }
+
+  for(int i = 2; i <=6; i++){
+           digitalWrite(i, LOW);
+   }
+}
